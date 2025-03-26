@@ -1,5 +1,5 @@
 FROM node:23 AS build
-WORKDIR /dist
+WORKDIR /app
 COPY package*.json ./
 RUN npm install 
 COPY . .
@@ -11,7 +11,7 @@ FROM nginx:alpine
 RUN rm -rf /usr/share/nginx/html/*
 
 # Copiar arquivos do React para a pasta do NGINX
-COPY ./dist /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Copiar configuração personalizada do NGINX
 COPY nginx.conf /etc/nginx/nginx.conf
