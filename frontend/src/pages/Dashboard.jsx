@@ -34,7 +34,7 @@ const Dashboard = () => {
 const handleSubmit = async (e) =>{
   e.preventDefault()
   const {rga, cpf, nome, turma, formacao, registro } = e.target.elements
-  var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/dashboard/register", {
+  var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/register", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",
@@ -54,7 +54,7 @@ window.location.reload();
 }
 
 const getUsers = async () =>{
-  var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/dashboard?page=0&size=10", {
+  var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080?page=0&size=10", {
     headers: {
       "Content-Type": "application/json",
       Authorization: 'Bearer ' + localStorage.getItem('access'),
@@ -71,7 +71,7 @@ const deleteRow = async (e) =>{
   e.preventDefault();
   var rga = e.target.id;
   console.log(rga);
-  var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/dashboard/delete", {
+  var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/delete", {
   method: 'DELETE',
   headers: {
     "Content-Type": "application/json",

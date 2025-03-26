@@ -47,7 +47,6 @@ const Login = () => {
     console.log(localStorage)
     // Save the access token in a React state or state management system
   });
-  navigate('/dashboard');
   window.location.reload();
     
 }
