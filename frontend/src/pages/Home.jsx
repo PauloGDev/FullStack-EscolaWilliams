@@ -52,7 +52,7 @@ function handleChangeMask(event) {
     e.preventDefault();
     const {cpf } = e.target.elements
     try{
-      const result = await axios.get('http://localhost:8080/check',{
+      const result = await axios.get('http://fundacaoeducadionalwilliams.shop:8080/check',{
         params: {
           cpf: cpf.value
         }

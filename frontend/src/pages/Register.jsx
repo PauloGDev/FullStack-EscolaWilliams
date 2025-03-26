@@ -9,7 +9,7 @@ const Register = () => {
     const navigate = useNavigate();
   const [result, setResult] = React.useState("");
 useEffect(() =>{
-    const result = fetch("http://69.62.102.59:8090/user", {
+    const result = fetch("http://fundacaoeducadionalwilliams.shop:8080/user", {
     headers: {
       "Content-Type": "application/json",
       Authorization: 'Bearer ' + localStorage.getItem('access'),
@@ -21,7 +21,7 @@ useEffect(() =>{
     }
     return response.json;
   })
-  console.log(localStorage)
+  console.log(localStorage);
 });
 
 
@@ -30,7 +30,7 @@ useEffect(() =>{
 const handleSubmit = async (e) =>{
   e.preventDefault()
   const {username, email, password } = e.target.elements
-  var result = await fetch("http://69.62.102.59:8090/auth/register", {
+  var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/auth/register", {
   method: "POST",
   headers: {
     "Content-Type": "application/json",

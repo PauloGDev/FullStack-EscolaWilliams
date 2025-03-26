@@ -39,7 +39,7 @@ const PaginationButtons = () =>{
     const handleSubmit = async (e) =>{
         e.preventDefault()
         const {rga, cpf, nome, turma, formacao, registro } = e.target.elements
-        var result = await fetch("http://localhost:8443/dashboard/register", {
+        var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/dashboard/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -59,7 +59,7 @@ const PaginationButtons = () =>{
       }
       
       const getUsers = async () => {
-        var result = await fetch("http://localhost:8443/dashboard?page=" + currentPage, {
+        var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/dashboard?page=" + currentPage, {
           headers: {
             "Content-Type": "application/json",
             Authorization: 'Bearer ' + localStorage.getItem('access'),
@@ -78,7 +78,7 @@ const PaginationButtons = () =>{
         let dataShow = document.querySelector("div.paginate");
         dataShow.classList.add('hidden');
         if(e.target.value.length > 0){
-            var result = await fetch("http://localhost:8443/getBy?search=" + e.target.value, {
+            var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/getBy?search=" + e.target.value, {
               headers: {
                 "Content-Type": "application/json",
                 Authorization: 'Bearer ' + localStorage.getItem('access'),
@@ -101,7 +101,7 @@ const PaginationButtons = () =>{
         e.preventDefault();
         var rga = e.target.id;
         console.log(rga);
-        var result = await fetch("http://localhost:8443/delete", {
+        var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/delete", {
         method: 'DELETE',
         headers: {
           "Content-Type": "application/json",
@@ -116,7 +116,7 @@ const PaginationButtons = () =>{
       }
 
     const getQtd = async () =>{
-        var result = await fetch("http://localhost:8443/getQtd", {
+        var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/getQtd", {
           headers: {
             "Content-Type": "application/json",
             Authorization: 'Bearer ' + localStorage.getItem('access'),
@@ -124,7 +124,7 @@ const PaginationButtons = () =>{
           // ...
         }).then(response => response.json())
         .then(data => {
-            setPageQtd(data/2);
+            setPageQtd(data/10);
           // Save the access token in a React state or state management system
         });
       }

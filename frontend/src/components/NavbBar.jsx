@@ -10,7 +10,7 @@ const Navbar = () => {
   const [buttonText, setButtonText] = useState("");
   
   useEffect(() =>{
-        const result = fetch("http://69.62.102.59:8090/user", {
+        const result = fetch("http://fundacaoeducadionalwilliams.shop:8080/user", {
         headers: {
           "Content-Type": "application/json",
           Authorization: 'Bearer ' + localStorage.getItem('access'),

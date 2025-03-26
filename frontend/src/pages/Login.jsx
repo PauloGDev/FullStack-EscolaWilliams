@@ -12,7 +12,7 @@ const Login = () => {
   const [result, setResult] = React.useState("");
 
   useEffect(() =>{
-      const result = fetch("http://localhost:8443/user", {
+      const result = fetch("http://fundacaoeducadionalwilliams.shop:8080/user", {
       headers: {
         "Content-Type": "application/json",
         Authorization: 'Bearer ' + localStorage.getItem('access'),
@@ -29,7 +29,7 @@ const Login = () => {
   const handleSubmit = async (e) =>{
     e.preventDefault()
     const {email, password } = e.target.elements
-    var result = await fetch("http://localhost:8443/auth/login", {
+    var result = await fetch("http://fundacaoeducadionalwilliams.shop:8080/auth/login", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -86,10 +86,6 @@ const Login = () => {
       </div>
     </form>
 
-    <p class="mt-10 text-center text-sm/6 text-gray-500">
-      Não tem uma conta?
-      <a href="/register" class="font-semibold text-[#014BAE] hover:text-[#285591]">Registre-se</a>
-    </p>
   </div>
 </div>
 
