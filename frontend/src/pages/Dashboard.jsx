@@ -85,6 +85,23 @@ const deleteRow = async (e) =>{
 window.location.reload();
 }
 
+useEffect(() =>{
+    const result = fetch("http://fundacaoeducadionalwilliams.shop:8080/user", {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: 'Bearer ' + localStorage.getItem('access'),
+    },
+    // ...
+  }).then((response) => {
+    if(response.status === 403){
+      navigate('/login');
+    }
+    return response.json;
+  })
+  console.log(localStorage);
+});
+
+
   return (
 <div id='inicio' className=''>
 <section id='' className='pt-24 py-56 justify-self-center'>
