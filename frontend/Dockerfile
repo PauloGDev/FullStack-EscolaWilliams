@@ -1,7 +1,7 @@
 # Build stage
 FROM node:latest
 
-WORKDIR /dist
+WORKDIR /app
 
 # Copy package.json and package-lock.json to the container
 COPY package*.json ./
@@ -22,7 +22,7 @@ FROM nginx:alpine
 COPY .docker/nginx.conf /etc/nginx/nginx.conf
 
 # Copy the built React app from the build stage to the nginx container
-COPY /dist /usr/share/nginx/html
+COPY /app/dist /usr/share/nginx/html
 
 # Expose port 80
 EXPOSE 80
