@@ -1,6 +1,5 @@
 FROM openjdk:21
-RUN mkdir /opt/app
-COPY . .
+RUN ./mvnw clean install -DskipTests
+COPY target/*.jar /app.jar
 EXPOSE 8080
-RUN ./mvnw clean package install -DskipTests
-ENTRYPOINT  ["java", "-jar", "target/EscolaWilliams-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-jar","/app.jar"]
