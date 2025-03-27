@@ -12,12 +12,11 @@ COPY ./src /app/src
 RUN mvn clean package -Dmaven.test.skip=true
 
 # Create a new image for running the application
-
 # Set the working directory
 WORKDIR /app
 
 # Copy the built JAR file from the previous stage
-COPY --from=build /app/target/*.jar app.jar
+COPY /app/target/*.jar app.jar
 
 # Expose the port on which the Spring Boot application will run
 EXPOSE 8080
