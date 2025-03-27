@@ -1,5 +1,5 @@
 # Build stage
-FROM node:23
+FROM node:latest
 
 WORKDIR /app
 
