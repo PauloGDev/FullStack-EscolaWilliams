@@ -8,21 +8,28 @@ services:
       - POSTGRES_DB=railway
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=zwJrSJtbPaHJRbvdbJEMXKAxYWmqksAG
-  backend:
-    build: ./backend
-    container_name: springboot-app
-    restart: always
+  server:
+    image: java:21
     ports:
-      - "8080:8080"
-    networks:
-      - app-network
+      - '8080:80'
+    volumes:
+      - ./server:/root/server
+    env_file:
+      - ./deploy/server.env
+    entrypoint: sh /root/server/start_server.sh
 
   frontend:
-    build: ./frontend
-    container_name: vite-app
-    restart: always
-    networks:
-      - app-network
+    build:
+      context: ./deploy
+      dockerfile: Dockerfile
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./frontend/build:/var/www/html
+      - ./deploy/default.conf:/etc/nginx/sites-available/default
+    depends_on:
+      - server
 
   nginx:
     image: nginx:alpine
@@ -40,3 +47,4 @@ services:
 
 networks:
   app-network:
+    driver: bridge
